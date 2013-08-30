@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for chgallery module tx_chgallery_image_aassawiz0</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="images">%s Images of the directory &quot;%s&quot;</label>
+			<label index="save">Save &amp; Close</label>
+			<label index="save2">Save</label>
+			<label index="close">Close window</label>
+			<label index="error-header">An error occurred</label>
+			<label index="error-neversavesd">Please save the plugin once and also a path!</label>
+			<label index="error-path">No path is defined!</label>
+			<label index="error-pathwrong">The path is not valid!</label>
+			<label index="path">Wizard for %s galleries, subfolders of %s </label>
+			<label index="title">Titel</label>
+			<label index="description">Click at the title of the subdirectory to open the images of this directory. Fill out the descriptions you need and press close!</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="images">%s Bilder aus dem Verzeichnis &quot;%s&quot;</label>
+			<label index="save">Speichern &amp; Schließen</label>
+			<label index="save2">Speichern</label>
+			<label index="close">Fenster schließen</label>
+			<label index="error-header">Achtung!</label>
+			<label index="error-neversavesd">Bitte das Plugin zumindest 1x mit einem gültigen Pfad speichern</label>
+			<label index="error-path">Kein Pfad angegeben!</label>
+			<label index="error-pathwrong">Kein gültiger Pfad angegeben!</label>
+			<label index="path">Wizard für %s Galerien, Unterordner von %s</label>
+			<label index="title">Titel</label>
+			<label index="description">Klicke auf den Namen des Unterverzeichnisses, um die zugehörigen Bilder zu öffnen. Gib eine Beschreibung ein und klicke am Ende auf 'Speichern'.</label>
+		</languageKey>
+		<languageKey index="fr" type="array">
+			<label index="images">%s images du répertoire &quot;%s&quot;</label>
+			<label index="save">Enregistrer &amp; Fermer</label>
+			<label index="save2">Enregistrer</label>
+			<label index="close">Fermer la fenêtre</label>
+			<label index="error-header">Une erreur est survenue !</label>
+			<label index="error-neversavesd">Veuillez enregistrer le plugin au moins 1x avec un chemin valide</label>
+			<label index="error-path">Aucun chemin n'a été défini !</label>
+			<label index="error-pathwrong">Le chemin n'est pas valide !</label>
+			<label index="path">Assistant pour %s galeries, sous-répertoires de %s</label>
+			<label index="title">Titre</label>
+			<label index="description">Cliquez sur le titre d'un sous-répertoire pour ouvrir les images de ce répertoire. Remplissez les descriptions et terminez en cliquant sur 'Enregistrer'.</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="images" type="integer">51309655</label>
+			<label index="save" type="integer">253224394</label>
+			<label index="save2" type="integer">211601612</label>
+			<label index="close" type="integer">160116745</label>
+			<label index="error-header" type="integer">170248019</label>
+			<label index="error-neversavesd" type="integer">3209624</label>
+			<label index="error-path" type="integer">199956932</label>
+			<label index="error-pathwrong" type="integer">14071217</label>
+			<label index="path" type="integer">101453565</label>
+			<label index="title" type="integer">25853986</label>
+			<label index="description" type="integer">9068979</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="images">%s Images of the directory &quot;%s&quot;</label>
+			<label index="save">Save &amp; Close</label>
+			<label index="save2">Save</label>
+			<label index="close">Close window</label>
+			<label index="error-header">An error occurred</label>
+			<label index="error-neversavesd">Please save the plugin once and also a path!</label>
+			<label index="error-path">No path is defined!</label>
+			<label index="error-pathwrong">The path is not valid!</label>
+			<label index="path">Wizard for %s galleries, subfolders of %s </label>
+			<label index="title">Titel</label>
+			<label index="description">Click at the title of the subdirectory to open the images of this directory. Fill out the descriptions you need and press close!</label>
+		</languageKey>
+	</orig_text>
+</T3locallang>

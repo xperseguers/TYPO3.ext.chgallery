@@ -1,0 +1,150 @@
+<!--
+/***************************
+ *   Default HTML for
+ *    EXT chgallery
+ *    Georg Ringer
+ * http://www.cyberhouse.at/
+ ***************************/ 
+-->
+-------------------------
+A L L   M A R K E R S:
+-------------------------
+
+=== CATEGORY VIEW ===
+=================
+	1.) General
+		IMAGE 					=> Preview image
+		TITLE 					=> Title of category
+		DESCRIPTION 		=> Description of category
+		PATH 						=> Path to the category
+		NAME						=> Name of the directory
+		SIZE 						=> Count of images in a category
+		ZEBRA 					=> Odd / even
+		LINK_ITEM 			=> Subpart for the link
+		LL_PATH					=> Language markers for the path 
+		LL_SIZE					=> Language markers for the size
+		LL_NAME					=> Language markers for the name
+
+=== GALLERY VIEW ===
+====================
+	1.) Pagebrowser
+		PAGEBROWSER			=> Link to all pages
+		FIRST 					=> Link to first page
+		LAST 						=> Link to last page
+		PREV						=> Link to previous page
+		NEXT						=> Link to next page
+		PAGEBROWSERTEXT => 1 / 3 
+	
+	2.) Directory Navigation
+		DIR_TITLE 			=> Title of the category
+		DIR_DESCRIPTION	=> Description of the category
+		DIR_PATH 				=> Path to the category
+		DIR_NAME				=> Name of the directory
+		DIR_SIZE 				=> Count of images in a category
+		DIR_BACK				=> Link back to category list
+	
+	3.) Image-Item
+		all Markers you can set in the single view!
+		
+	4.) General
+		LINKSBEFORE			=> Links before this page
+		LINKSAFTER			=> Links after this page
+		
+	5.) Subparts
+		PAGEBROWSER			=> Subpart to hide the pagebrowser if random mode is used
+		SUBDIR_NAVIGATION => Subpart to hide category navigation of not used
+		EXIF 						=> Subpart to hide exif information 
+
+=== SINGLE VIEW ===
+====================
+	1.) General
+		IMAGE						=> Image
+		FILENAME				=> Filename of the image
+		DESCRIPTION			=> Description of the image
+		EXIF_SIZE				=> Size of the image, out of exif
+		EXIF_TIME				=> Time of the image, out of exif
+		DOWNLOAD				=> Downloadlink of the image
+		RATINGS					=> RATING using EXT:ratings
+		POSITION				=> Position of the current image
+		
+	2.) Pagebrowser
+		PREV						=> Link to the previous image
+		NEXT						=> Link to the next image
+
+
+<!-- ###TEMPLATE_SINGLE### -->
+<!--###SINGLE_IMAGE### -->
+
+	<div class="bigimg">###IMAGE###</div>
+	
+
+<!--###SINGLE_IMAGE### -->	
+<!-- ###TEMPLATE_SINGLE### -->
+
+
+
+
+<!-- ###TEMPLATE### -->
+	<!--###SUBDIR_NAVIGATION### start -->
+	<div class="info">
+		###DIR_TITLE###
+		###DIR_DESCRIPTION###
+		<div>
+			<small><i>
+					###LL_SIZE###: ###DIR_SIZE###<br />
+					###LL_NAME###: ###DIR_NAME###
+			</i></small>
+		</div>
+
+		###DIR_BACK###
+	</div>
+	<!--###SUBDIR_NAVIGATION### end -->
+
+
+	###LINKSBEFORE###
+
+	<!-- ###CONTENT### --><!-- ###ITEM### -->
+		<div class="single ###ACT###" >
+
+				<div class="img">###IMAGE###</div>
+
+
+		</div>
+	<!-- ###ITEM### --><!-- ###CONTENT### -->
+	<div class="clr"></div>
+	
+	###LINKSAFTER###
+	<!--###PAGEBROWSER### start -->
+	<div class="pagebrowser">
+		<div class="prev">###PREV###</div>
+		<div class="text">###PAGEBROWSERTEXT###</div>
+		<div class="next">###NEXT###</div>
+		<div class="clr"></div>
+	</div>
+	<!--###PAGEBROWSER### end -->
+
+	
+<!-- ###TEMPLATE### -->
+
+
+<!-- ###TEMPLATE_LIST### -->
+	<ul class="chgallery-list">
+		<!-- ###CONTENT### --><!-- ###ITEM### -->
+			<li class="item item###ZEBRA###" >
+				<div class="img">
+						<!-- ###LINK_ITEM### -->###IMAGE###<!-- ###LINK_ITEM### -->
+				</div>
+				<div class="text">
+					<div class="title"><!-- ###LINK_ITEM### -->###TITLE###<!-- ###LINK_ITEM### --></div>
+					<div class="description">###DESCRIPTION###</div> 
+					<small><i>
+					###LL_SIZE###: ###SIZE###<br />
+					###LL_NAME###: ###NAME###<br />
+					###LL_DATE###: ###DATE###</i></small>
+				</div>
+				<div class="clr"></div>
+			</li>
+		<!-- ###ITEM### --><!-- ###CONTENT### -->
+	</ul>
+<!-- ###TEMPLATE_LIST### -->
+

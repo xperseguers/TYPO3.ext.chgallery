@@ -1,0 +1,14 @@
+Add the following part to your cooluri configuration
+
+<part>
+	<parameter>tx_chgallery_pi1[ceid]</parameter>
+</part>
+<part>
+	<parameter>tx_chgallery_pi1[pointer]</parameter>
+</part>
+<part>
+	<parameter>tx_chgallery_pi1[dir]</parameter>
+</part>
+<part>
+	<parameter>tx_chgallery_pi1[single]</parameter>
+</part>

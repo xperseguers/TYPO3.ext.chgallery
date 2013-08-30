@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<!-- $Id: locallang_csh.xml 200 2007-09-29 20:49:42Z dima $ -->
+<T3locallang>
+	<meta type="array">
+		<description>CSH labels</description>
+		<type>CSH</type>
+		<csh_table></csh_table>
+		<fileId>EXT:chgallery/locallang_csh.xml</fileId>
+		<labelContext type="array">
+		</labelContext>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="show.description">Defines the mode of the gallery.</label>
+			<label index="show.details"><![CDATA[ Possible views are:
+						<ul>
+							<li>- <strong>Gallery view:</strong> Show all images from the given path.</li> 
+							<li>- <strong>Category view:</strong> Show all subdirectories from the given path. Each directory represents a category.</li>
+							<li>- <strong>Single view:</strong> Show a single image, best use in combination with another view.</li>
+						</ul>
+						 ]]></label>
+			<label index="path.description">The path to the directory with the images.</label>
+			<label index="path.details"><![CDATA[ Define the path where the images/directories are saved. A valid path looks like "<i>fileadmin/photos/xmas/</i>". Install the extension "<strong>rgfolderselector</strong>" to get a wizard for the path and avoid errors while adding the path. ]]></label>
+
+			<label index="description.description">Add a description to every image by using the wizard. To open the wizard click on the icon.</label>
+			<label index="description.details">Each description is saved in a seperate text file with the same filename as the image in the same directory. </label>
+
+			<label index="title.description">Add a title to each category by adding it to the textarea. Each line in the textarea represents one category. To add a description to the category please use the wizard.</label>
+			<label index="categoryOrder.description">Use the selection field to sort the categories either ascending or descending (by its name).</label>
+			<label index="pagebrowser.description">Set how many images should be displayed on each page.</label>
+			<label index="random.description"><![CDATA[Enable a random view. Important: 
+			<ul><li>- Additionally must be set in TS: <i>plugin.tx_chgallery_pi1 = USER_INT</i></li>
+																					<li>- The pagebrowser will get hidden</li></ul> ]]></label>
+			<label index="link.description">Link every image to a specific page.</label>
+			<label index="single.description">Enable the single view in the plugin which is set to GALLERY or CATEGORY view. Insert then the plugin on the same page again and set the view to SINGLE.</label>
+			<label index="renderAllLinks.description">Enable this checkbox to be able to show all images inside the lightbox even if there is more then one page in the pagebrowser. Without enabling it the lightbox will just show the images of the current page.</label>
+			<label index="excludeFirstImage.description">If this checkbox is enabled and the category view is used, the first image will be used as preview image only and will not be visible inside the gallery.</label>
+		</languageKey>
+
+		<languageKey index="de" type="array">
+			<label index="show.description">Definiert den Anzeige-Modus.</label>
+			<label index="show.details"><![CDATA[ Mögliche Ansichten sind:
+						<ul>
+							<li>- <strong>Galerie-Ansicht:</strong> Ausgabe aller Bilder des angegebenen Ordners</li> 
+							<li>- <strong>Kategorie-Ansicht:</strong> Ausgabe aller Unterordner des angegebenen Ordners. Jeder Unterordner repräsentiert eine Kategorie.</li>
+							<li>- <strong>Einzel-Ansicht:</strong> Ausgabe eines einzelnen Bildes, ideal in Kombination mit Galerie-/Kategorie-Ansicht.</li>
+						</ul>
+						 ]]></label>
+			<label index="path.description">Der Pfad zum Ordner mit den Bildern.</label>
+			<label index="path.details"><![CDATA[ Definiert den Pfad zu dem Ordner, in dem die Bilder/Unterordner gespeichert sind. Ein valider Pfad hat folgende Struktur "<i>fileadmin/photos/xmas/</i>". Die Extension "<strong>rgfolderselector</strong>" lässt Redakteure Tippfehler vermeiden und erweitert das Feld um einen Wizard zur Wahl des Ordners. ]]></label>
+
+			<label index="description.description">Ergänze jedes Bild um eine Beschreibung mit Hilfe des Wizards. Um den Wizard zu öffnen, einfach auf das Icon klicken.</label>
+			<label index="description.details">Jede Beschreibung ist in einer seperaten Datei gespeichert, die den gleichen Namen wie das Bild hat und im gleichen Verzeichnis gespeichert ist.</label>
+			
+			<label index="title.description">Ergänze jede Kategorie um einen Titel. Jede Zeile im Textfeld steht für eine Galerie. Um eine Beschreibung hinzufügen, benütze den Wizard.</label>
+			<label index="categoryOrder.description">Es besteht die Möglichkeit, die Kategorien ab- oder aufsteigend zu sortieren.</label>
+			<label index="pagebrowser.description">Anzahl an Bildern pro Seite.</label>
+			<label index="random.description"><![CDATA[Aktivierung des Zufallmodus. Achtung: 
+			<ul><li>- Zusätzlich muss per TS gesetzt sein: <i>plugin.tx_chgallery_pi1 = USER_INT</i></li>
+																					<li>-Der Pagebrowser wird automatisch verborgen</li></ul> ]]></label>
+			<label index="link.description">Verlinke jedes Bild mit einer bestimmten Seit</label>
+			<label index="single.description">Falls aktiviert, wird die Einzel-Ansicht ermöglicht. Hierfür muss das Plugin ein 2. Mal auf der Seite aktiviert werden, wobei im 2. Plugin die Ansicht auf Einzelansicht gestellt werden muss.</label>
+			<label index="renderAllLinks.description">Falls aktiviert werden in der Lightbox alle Bilder von allen Seiten des Pagebrowsers angezeigt (und nicht nur von der gerade aktuellen).</label>
+			<label index="excludeFirstImage.description">Falls aktiviert und die Kategorie-Ansicht verwendet wird, wird das 1. Bild nur in der Kategorie-Übersicht angezeigt und nicht mehr in der Galerie-Ansicht.</label>
+		</languageKey>
+		
+		<languageKey index="fr" type="array">
+			<label index="show.description">Définit le mode de fonctionnement de la galerie.</label>
+			<label index="show.details"><![CDATA[ Les vues possibles sont :
+						<ul>
+							<li>- <strong>Vue Galerie :</strong> Affiche toutes les images du répertoire spécifié.</li> 
+							<li>- <strong>Vue Catégorie :</strong> Affiche tous les sous-répertoires du répertoire spécifié. Chaque répertoire représente une catégorie.</li>
+							<li>- <strong>Vue Détail :</strong> Affiche une image unique, particulièrement utile en combinaison avec une autre vue.</li>
+						</ul>
+						 ]]></label>
+			<label index="path.description">Le chemin d'accès au répertoire contenant les images.</label>
+			<label index="path.details"><![CDATA[ Définit le répertoire où sont stockés les images/répertoires. Un chemin valide est de la forme "<i>fileadmin/photos/noel/</i>". Installez l'extension "<strong>rgfolderselector</strong>" pour utiliser un navigateur de répertoire et ainsi éviter les erreurs de saisie. ]]></label>
+
+			<label index="description.description">Ajoutez une description à chaque image en utilisant l'assistant. Pour ouvrir l'assistant, cliquez sur l'icône.</label>
+			<label index="description.details">Chaque description est enregistrée dans un fichier texte distinct portant le nom de l'image dans le même répertoire.</label>
+
+			<label index="title.description">Ajoutez un titre à chaque catégorie en l'ajoutant à la zone de texte. Chaque ligne de la zone de texte représente une catégorie. Pour ajouter une description à la catégorie, veuillez utiliser l'assistant.</label>
+			<label index="categoryOrder.description">Utilisez le champ de sélection pour trier les catégories de manière croissante ou décroissante (selon son nom).</label>
+			<label index="pagebrowser.description">Définit combien d'images doivent être affichées par page.</label>
+			<label index="random.description"><![CDATA[Active une vue aléatoire. Important : 
+			<ul><li>- La ligne suivante doit être ajoutée au TS: <i>plugin.tx_chgallery_pi1 = USER_INT</i></li>
+																					<li>- La pagination sera masquée</li></ul> ]]></label>
+			<label index="link.description">Lie chaque image à une page spécifique.</label>
+			<label index="single.description">Active la vue détail pour le plugin qui est paramétré en mode GALERIE ou CATEGORIE. Insérez ensuite le plugin sur la même page et paramétrez-le en vue DETAIL.</label>
+			<label index="renderAllLinks.description">Cocher cette case à cocher pour afficher toutes les images dans lightbox même s'il y a plus d'une page de photos. Sans cette option, lightbox n'affichera que les images de la page courante.</label>
+			<label index="excludeFirstImage.description">Si cette option est activée et la vue catégorie est utilisée, la première image sera utilisé pour la prévisualisation uniquement et ne sera pas visible dans la galerie.</label>
+		</languageKey>
+
+		<languageKey index="nl" type="array">
+			<label index="show.description">Bepaalt de modus van de gallery</label>
+			<label index="show.details"><![CDATA[ Mogelijke weergaven zijn:
+						<ul>
+							<li>- <strong>Gallery weergave:</strong> Toon alle foto's uit de folder </li> 
+							<li>- <strong>Categorie weergave:</strong> Toon alle subfolder van de gekozen folder. Elke folder representeerd een categorie.</li>
+							<li>- <strong>Enkel weergave:</strong> Toon een enkele foto, het beste te gebruiken in combinatie met een andere weergave optie.</li>
+						</ul>
+						 ]]></label>
+			<label index="path.description">Het pad naar de folder met de foto's.</label>
+			<label index="path.details"><![CDATA[ Geef het pad aan waar de foto's en folders zijn opgeslagen. Een correct pad ziet eruit als "<i>fileadmin/photos/xmas/</i>". Installeer de extensie "<strong>rgfolderselector</strong>" om een wizard te krijgen en fouten te voorkomen. ]]></label>
+
+			<label index="description.description">Voeg een omschrijving toe d.m.v. de wizard. Klik op het icoontje om de wizard te starten.</label>
+			<label index="description.details">Elke omschrijving wordt opgeslagen als een apart tekst bestand met dezelfde naam als de foto in dezelfde folder. </label>
+
+			<label index="title.description">Voeg een titel aan de categorie toe door deze in het tekstvak in te vullen. Elke regel in het tekstvak representeerd een titel. Om een omschrijving toe te voegen kunt u de wizard gebruiken.</label>
+			<label index="categoryOrder.description">Gebruik het selectieveld om de categorien oplopend of aflopend op naam weer te geven.</label>
+			<label index="pagebrowser.description">Geef aan hoeveel foto's per pagina geplaatst moeten worden.</label>
+			<label index="random.description"><![CDATA[Maak een willekeurige weergave mogelijk. Belangrijk: 
+			<ul><li>- Het volgende moet worden toegevoegd in TS: <i>plugin.tx_chgallery_pi1 = USER_INT</i></li>
+																					<li>-De paginabrowser zal verborgen worden</li></ul> ]]></label>
+			<label index="link.description">Link elke foto naar een specifieke pagina.</label>
+			<label index="single.description">Maak de enkele weergave mogelijk in de plugin als deze op GALLERY of CATEGORY weergave staat. Voeg de plugin nogmaals toe op dezelfde pagina met de weergave SINGLE.</label>
+			<label index="renderAllLinks.description">Selecteer deze optie om alle foto's te laten tonen in een lightbox voor het geval er meerdere pagina's zijn. Zijn er meerdere pagina's en deze optie staat niet aan, zullen alleen de foto's van de huidige pagina in een lightbox verschijnen.</label>
+			<label index="excludeFirstImage.description">Wanneer deze optie is geselecteerd en de categorie weergave is ingebruik, wordt de eerste foto gebruikt als voorvertoning en zal deze niet meer in het album zichtbaar zijn.</label>
+		</languageKey>
+		
+		
+	</data>
+</T3locallang>

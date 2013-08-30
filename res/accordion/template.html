@@ -1,0 +1,81 @@
+<!--
+/***************************
+ *   Default HTML for
+ *    EXT chgallery
+ *    Georg Ringer
+ * http://www.cyberhouse.at/
+ ***************************/ 
+-->
+
+additional markers
+###PAGEBROWSER###
+###FIRST###
+###LAST###
+
+<!-- ###TEMPLATE### -->
+	<!--###SUBDIR_NAVIGATION### start -->
+	<div class="dirbrowser">
+		###DIR_TITLE###
+		###DIR_DESCRIPTION###>
+		###DIR_BACK###
+	</div>
+	<!--###SUBDIR_NAVIGATION### end -->
+
+
+	<div class="pagebrowser">
+		<div class="prev">###PREV###</div>
+		<div class="text">###PAGEBROWSERTEXT###</div>
+		<div class="next">###NEXT###</div>
+		<div class="clr"></div>
+	</div>
+
+	###LINKSBEFORE###
+
+	<!-- ###CONTENT### --><!-- ###ITEM### -->
+		<div class="single" >
+			<div class="img">
+				
+				<div class="align">
+					###IMAGE###
+				</div>
+			</div>
+			<span>###DESCRIPTION###</span>
+			###RATINGS###
+		</div>
+	<!-- ###ITEM### --><!-- ###CONTENT### -->
+	<div class="clr"></div>
+	
+	###LINKSAFTER###
+	
+	<div class="pagebrowser">
+		<div class="prev">###PREV###</div>
+		<div class="text">###PAGEBROWSERTEXT###</div>
+		<div class="next">###NEXT###</div>
+		<div class="clr"></div>
+	</div>
+	
+<!-- ###TEMPLATE### -->
+
+
+<!-- ###TEMPLATE_LIST### -->
+	<div class="chgallery-list" id="chgallery-list">
+		<!-- ###CONTENT### --><!-- ###ITEM### -->
+			<div class="chgallery-title item item###ZEBRA###" >###TITLE###</div>
+			<div class="chgallery-content"><div class="chgallery-content2">
+				<div class="img">
+							<!-- ###LINK_ITEM### -->###IMAGE###<!-- ###LINK_ITEM### -->
+					</div>
+					<div class="text">
+						<div class="title"><!-- ###LINK_ITEM### -->###TITLE###<!-- ###LINK_ITEM### --></div>
+						<div class="description">###DESCRIPTION###</div> 
+						<small><i>
+						###LL_SIZE###: ###SIZE###</i></small>
+					</div>
+					<div class="clr"></div>
+			</div></div>
+		<!-- ###ITEM### --><!-- ###CONTENT### -->
+		
+	</div>
+
+	<script src="typo3conf/ext/chgallery/res/accordion/accordion.js" type="text/javascript"></script>
+<!-- ###TEMPLATE_LIST### -->

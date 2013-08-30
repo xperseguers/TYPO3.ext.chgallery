@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for plugin &quot;tx_chgallery_pi1&quot;</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<!-- possible: ###FROM###, ###TO###, ###OUT_OF###, ###FROM_TO###, ###CURRENT_PAGE###, ###TOTAL_PAGES### -->
+			<label index="pi_list_browseresults_displays">Page &lt;span class="chgcurrent"&gt;###CURRENT_PAGE###&lt;/span&gt; of &lt;span class="chgtotal"&gt;###TOTAL_PAGES###&lt;/span&gt;</label>
+			<label index="pi_list_browseresults_next">Next Page</label>
+			<label index="pi_list_browseresults_prev">Previous Page</label>
+			<label index="pi_list_browseresults_first">Back to the overview</label>			
+			<label index="pi_list_browseresults_last">Last Page</label>
+			
+			<label index="dir_back">Back to the gallery list</label>
+			<label index="size">Number of images</label>			
+			<label index="path">Path</label>
+			<label index="name">Directory</label>
+			<label index="date">Date</label>		
+			<label index="description">Description</label>
+			<label index="download">Download</label>
+			<label index="exif_size">Size</label>
+			<label index="exif_time">Time</label>			
+			<label index="filename">File</label>
+			<label index="previousImage">Previous image</label>			
+			<label index="nextImage">Next image</label>
+			<label index="cooliris">Start the slideshow</label>
+		</languageKey>
+
+		<languageKey index="de" type="array">
+			<label index="pi_list_browseresults_displays">Seite &lt;span class="chgcurrent"&gt;###CURRENT_PAGE###&lt;/span&gt; von &lt;span class="chgtotal"&gt;###TOTAL_PAGES###&lt;/span&gt;</label>
+			<label index="pi_list_browseresults_next">Nächste Seite &amp;raquo;</label>
+			<label index="pi_list_browseresults_prev">&amp;laquo; Vorige Seite</label>
+			<label index="pi_list_browseresults_first">Zurück zur Übersicht</label>			
+			<label index="pi_list_browseresults_last">Letzte Seite</label>
+
+			<label index="dir_back">Zurück zur Auswahl</label>
+			<label index="size">Anzahl an Bilder</label>
+			<label index="path">Pfad</label>
+			<label index="name">Ordner</label>
+			<label index="date">Datum</label>
+			<label index="description">Beschreibung</label>
+			<label index="download">Download</label>
+			<label index="exif_size">Größe</label>
+			<label index="exif_time">Uhrzeit</label>			
+			<label index="filename">Datei</label>
+			<label index="previousImage">voriges Bild</label>			
+			<label index="nextImage">nächstes Bild</label>
+			<label index="cooliris">Diashow starten</label>
+		</languageKey>
+
+		<languageKey index="nl" type="array">
+			<label index="pi_list_browseresults_displays">Pagina &lt;span class="chgcurrent"&gt;###CURRENT_PAGE###&lt;/span&gt; van &lt;span class="chgtotal"&gt;###TOTAL_PAGES###&lt;/span&gt;</label>
+			<label index="pi_list_browseresults_next">Volgende pagina</label>
+			<label index="pi_list_browseresults_prev">Vorigepagina</label>
+			<label index="pi_list_browseresults_first">Terug naar het overzicht</label>			
+			<label index="pi_list_browseresults_last">Laatste pagina</label>
+			
+			<label index="dir_back">Terug naar de album lijst</label>
+			<label index="size">Totaal aantal foto's</label>			
+			<label index="path">Pad</label>
+			<label index="name">Folder</label>
+			<label index="date">Datum</label>		
+			<label index="description">Omschrijving</label>
+			<label index="download">Download</label>
+			<label index="exif_size">Grootte</label>
+			<label index="exif_time">Tijd</label>			
+			<label index="filename">Bestand</label>
+			<label index="previousImage">Vorige foto</label>			
+			<label index="nextImage">Volgende foto</label>
+			<label index="cooliris">Start de slideshow</label>
+		</languageKey>
+		
+		<languageKey index="dk" type="array">
+			<!-- possible: ###FROM###, ###TO###, ###OUT_OF###, ###FROM_TO###, ###CURRENT_PAGE###, ###TOTAL_PAGES### -->
+			<label index="pi_list_browseresults_displays">Side &lt;span class="chgcurrent"&gt;###CURRENT_PAGE###&lt;/span&gt; af &lt;span class="chgtotal"&gt;###TOTAL_PAGES###&lt;/span&gt;</label>
+			<label index="pi_list_browseresults_next">Næste side</label>
+			<label index="pi_list_browseresults_prev">Forrige side</label>
+			<label index="pi_list_browseresults_first">Tilbage til oversigt</label>			
+			<label index="pi_list_browseresults_last">Sidste side</label>
+			
+			<label index="dir_back">Tilbage til oversigt</label>
+			<label index="size">Antal billeder</label>			
+			<label index="path">Sti</label>
+			<label index="name">Mappe</label>
+			<label index="date">Dato</label>		
+			<label index="description">Beskrivelse</label>
+			<label index="download">Download</label>
+			<label index="exif_size">Størrelse</label>
+			<label index="exif_time">Tidspunkt</label>			
+			<label index="filename">Fil</label>
+			<label index="previousImage">Forrige billede</label>			
+			<label index="nextImage">Næste billede</label>
+		</languageKey>
+
+		<languageKey index="fr" type="array">
+			<label index="pi_list_browseresults_displays">Page &lt;span class="chgcurrent"&gt;###CURRENT_PAGE###&lt;/span&gt; sur &lt;span class="chgtotal"&gt;###TOTAL_PAGES###&lt;/span&gt;</label>
+			<label index="pi_list_browseresults_next">Page suivante &amp;raquo;</label>
+			<label index="pi_list_browseresults_prev">&amp;laquo; Page précédente</label>
+			<label index="pi_list_browseresults_first">Retour à la vue d'ensemble</label>			
+			<label index="pi_list_browseresults_last">Dernière page</label>
+
+			<label index="dir_back">Retour à la liste des galeries</label>
+			<label index="size">Nombre d'images</label>
+			<label index="path">Chemin</label>
+			<label index="name">Répertoire</label>
+			<label index="date">Date</label>
+			<label index="description">Description</label>
+			<label index="download">Télécharger</label>
+			<label index="exif_size">Taille</label>
+			<label index="exif_time">Heure</label>			
+			<label index="filename">Fichier</label>
+			<label index="previousImage">image précédente</label>			
+			<label index="nextImage">image suivante</label>
+			<label index="cooliris">Lancer le diaporama</label>
+		</languageKey>
+		
+		<languageKey index="fo" type="array">
+			<!-- possible: ###FROM###, ###TO###, ###OUT_OF###, ###FROM_TO###, ###CURRENT_PAGE###, ###TOTAL_PAGES### -->
+			<label index="pi_list_browseresults_displays">Síða &lt;span class="chgcurrent"&gt;###CURRENT_PAGE###&lt;/span&gt; av &lt;span class="chgtotal"&gt;###TOTAL_PAGES###&lt;/span&gt;</label>
+			<label index="pi_list_browseresults_next">Næsta síða</label>
+			<label index="pi_list_browseresults_prev">Undanfarna síða</label>
+			<label index="pi_list_browseresults_first">Aftur til yvirlit</label>			
+			<label index="pi_list_browseresults_last">Síðsta síða</label>
+			
+			<label index="dir_back">Aftur til yvirlit</label>
+			<label index="size">Tal av myndum</label>			
+			<label index="path">Sló</label>
+			<label index="name">Mappa</label>
+			<label index="date">Dato</label>		
+			<label index="description">Frágreiing</label>
+			<label index="download">Download</label>
+			<label index="exif_size">Stødd</label>
+			<label index="exif_time">Tíðspunkt</label>			
+			<label index="filename">Fíl</label>
+			<label index="previousImage">Undanfarna mynd</label>			
+			<label index="nextImage">Næsta mynd</label>
+		</languageKey>		
+	</data>
+</T3locallang>

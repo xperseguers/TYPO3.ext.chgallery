@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'chgallery'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tt_content.list_type_pi1">Simple gallery - chgallery</label>
+			
+			<!-- sheet: sDEF -->
+			<label index="show">Display</label>
+			<label index="show.list">CATEGORY view => Categories (subdirs)</label>
+			<label index="show.gallery">GALLERY view => Images of a dir</label>
+			<label index="show.single">SINGLE view => Single image</label>			
+			<label index="settings">Settings</label>			
+			<label index="path">Path</label>
+			<label index="pagebrowser">Images / page</label>
+			<label index="description">Description</label>
+			<label index="random">Random Mode</label>
+			<label index="link">Link all images to</label>			
+			<label index="width">Image width</label>
+			<label index="height">Image height</label>
+			<label index="title">Category title &amp; description</label>
+			<label index="descriptionList">Description</label>			
+			<label index="single">Use Single view</label>
+			<label index="categoryOrder">Sorting of categories</label>
+			<label index="categoryOrder.title">Title</label>
+			<label index="categoryOrder.path">Path</label>
+			<label index="categoryOrder.date">Date</label>
+			<label index="categoryOrder.size">Count of images</label>
+			<label index="categoryAscDesc">Order By</label>
+			<label index="categoryAscDesc.asc">ascending</label>
+			<label index="categoryAscDesc.desc">descending</label>
+			
+			<!-- sheet: more -->
+			<label index="more">Additional options</label>
+			<label index="renderAllLinks">Show all images in Lightbox</label>
+			<label index="excludeFirstImage">Don't display first image in single view (Category view only)</label>
+			<label index="templateFile">Template</label>
+			
+			<!-- sheet: preview -->
+			<label index="preview">Preview</label>
+			
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="tt_content.list_type_pi1">Einfache Galerie - chgallery</label>
+
+			<!-- sheet: sDEF -->
+			<label index="show">Anzeige</label>
+			<label index="show.list">KATEGORY-Ansicht => Kategorien mit Unterverzeichnissen</label>
+			<label index="show.gallery">GALERIE-Ansicht => Bilder aus Verzeichnissen</label>
+			<label index="show.single">DETAIL-Ansicht => Einzelanzeige</label>			
+			<label index="settings">Einstellungen</label>			
+			<label index="path">Pfad der Bilder</label>
+			<label index="pagebrowser">Bilder / Seite</label>
+			<label index="description">Beschreibung</label>
+			<label index="random">Zufallsmodus</label>
+			<label index="link">Alle Bilder verlinken</label>			
+			<label index="width">Bildbreite</label>
+			<label index="height">Bildhöhe</label>
+			<label index="title">Kategorietitel &amp; -beschreibung</label>
+			<label index="descriptionList">Beschreibung</label>			
+			<label index="single">Benutze Detail-Ansicht</label>
+			<label index="categoryOrder">Sortierung der Kategorien</label>
+			<label index="categoryOrder.title">Titel</label>
+			<label index="categoryOrder.path">Pfad</label>
+			<label index="categoryOrder.date">Datum</label>
+			<label index="categoryOrder.size">Anzahl Bilder</label>
+			<label index="categoryAscDesc">Sortiert nach</label>
+			<label index="categoryAscDesc.asc">aufsteigend</label>
+			<label index="categoryAscDesc.desc">absteigend</label>
+			<!-- sheet: more -->
+			<label index="more">Zusätzliche Einstellungen</label>
+			<label index="renderAllLinks">Zeige alle Bilder in der Lightbox</label>
+			<label index="excludeFirstImage">Erstes Bild bei Kategorie-Modus nicht anzeigen</label>
+			<label index="templateFile">Template</label>
+			
+			<!-- sheet: preview -->
+			<label index="preview">Vorschau</label>
+
+		</languageKey>
+		<languageKey index="fr" type="array">
+			<label index="tt_content.list_type_pi1">Galerie simple - chgallery</label>
+			
+			<!-- sheet: sDEF -->
+			<label index="show">Affichage</label>
+			<label index="show.list">Vue CATEGORIE => Catégories (sous-répertoires)</label>
+			<label index="show.gallery">Vue GALLERIE => Images d'un répertoire</label>
+			<label index="show.single">Vue DETAIL => Image unique</label>			
+			<label index="settings">Paramètres</label>
+			<label index="path">Chemin</label>
+			<label index="pagebrowser">Images / page</label>
+			<label index="description">Description</label>
+			<label index="random">Mode aléatoire</label>
+			<label index="link">Lier toutes les images à</label>			
+			<label index="width">Largeur de l'image</label>
+			<label index="height">Hauteur de l'image</label>
+			<label index="title">Titre et description de la catégorie</label>
+			<label index="descriptionList">Description</label>			
+			<label index="single">Utiliser la vue détail</label>
+			<label index="categoryOrder">Tri des catégories</label>
+			<label index="categoryOrder.asc">croissant</label>
+			<label index="categoryOrder.desc">décroissant</label>
+
+			<!-- sheet: more -->
+			<label index="more">Options supplémentaires</label>
+			<label index="renderAllLinks">Afficher toutes les images dans Lightbox</label>
+			<label index="excludeFirstImage">Ne pas afficher la première image en vue détail (uniquement pour la vue Catégorie)</label>
+			<label index="templateFile">Modèle</label>
+			
+			<!-- sheet: preview -->
+			<label index="preview">Prévisualisation</label>
+			
+		</languageKey>
+		<languageKey index="nl" type="array">
+			<label index="tt_content.list_type_pi1">Eenvoudige gallery - chgallery</label>
+			
+			<!-- sheet: sDEF -->
+			<label index="show">Toon</label>
+			<label index="show.list">CATEGORY aanzicht => Categorien (subfolders)</label>
+			<label index="show.gallery">GALLERY aanzicht => Foto's uit een folder</label>
+			<label index="show.single">ENKEL aanzicht => Enkele foto</label>			
+			<label index="settings">Instellingen</label>			
+			<label index="path">Pad</label>
+			<label index="pagebrowser">Foto's / pagina</label>
+			<label index="description">Omschrijving</label>
+			<label index="random">Random Modus</label>
+			<label index="link">Link alle foto's naar</label>			
+			<label index="width">Foto breedte</label>
+			<label index="height">Foto hoogte</label>
+			<label index="title">Category titel &amp; omschrijving</label>
+			<label index="descriptionList">Omschrijving</label>			
+			<label index="single">Gebruik Enkel aanzicht</label>
+			<label index="categoryOrder">Categorie volgorde</label>
+			<label index="categoryOrder.asc">oplopend</label>
+			<label index="categoryOrder.desc">aflopend</label>
+
+			<!-- sheet: more -->
+			<label index="more">Optionele instellingen</label>
+			<label index="renderAllLinks">Toon alle foto's in een Lightbox</label>
+			<label index="excludeFirstImage">De eerste foto niet tonen bij gebruik van de Categorie weergave</label>
+			
+			<!-- sheet: preview -->
+			<label index="preview">Preview</label>
+		</languageKey>		
+	</data>
+</T3locallang>

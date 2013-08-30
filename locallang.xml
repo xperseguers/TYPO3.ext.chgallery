@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for extension 'chgallery'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="pi1_title">Simple gallery</label>
+			<label index="pi1_plus_wiz_description">Another simple gallery with images from a directory &amp; pagination.</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="pi1_title">Einfache Galerie</label>
+			<label index="pi1_plus_wiz_description">Galerie mit Bildern aus einem Verzeichnis inkl. Seitenumbruch.</label>
+		</languageKey>
+		<languageKey index="nl" type="array">
+			<label index="pi1_title">Eenvoudige gallery</label>
+			<label index="pi1_plus_wiz_description">Een simpele gallery met foto's uit folders &amp; een paginabrowser.</label>
+		</languageKey>
+		<languageKey index="fr" type="array">
+			<label index="pi1_title">Galerie simple</label>
+			<label index="pi1_plus_wiz_description">Galerie avec des images d'un répertoire et une pagination.</label>
+		</languageKey>
+		
+	</data>
+</T3locallang>

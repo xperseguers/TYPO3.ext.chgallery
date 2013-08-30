@@ -1,0 +1,213 @@
+ /***************************
+ *   Default CSS for
+ *   EXT chgallery
+ *    Georg Ringer
+ * http://www.cyberhouse.at/
+ ***************************/ 
+ 
+ /************************
+ * SINGLE view 
+ ************************/  
+.tx-chgallery-pi1 .bigimg {
+	text-align:center;
+}
+ 
+/************************
+ * CATEGORY view 
+ ************************/  
+.tx-chgallery-pi1 .chgallery-list {
+ 	padding:0;
+	margin:5px 10px;
+ 	list-style:none;
+ 	border:1px solid #D2DCE4;
+ 	border-bottom:0;
+}
+
+/* LIST element */
+.tx-chgallery-pi1 .chgallery-list li {
+	padding:5px;
+	border-bottom:1px solid #D2DCE4;	
+}
+
+.tx-chgallery-pi1 .chgallery-list .itemodd { background:#E7EDF1; }
+.tx-chgallery-pi1 .chgallery-list .itemodd .img img { border:1px solid #ececec; }
+.tx-chgallery-pi1 .chgallery-list .itemeven { background:#f4f4f4; }
+.tx-chgallery-pi1 .chgallery-list .itemeven .img img { border:1px solid #E7EDF1; }
+
+.tx-chgallery-pi1 .chgallery-list .title a {
+	font-weight:bold;
+}
+ 
+.tx-chgallery-pi1 .chgallery-list .img {
+	float:left;
+	width:120px;
+	padding-left:2px;
+}
+
+
+.tx-chgallery-pi1 .chgallery-list .text {
+	float:left;
+	width:400px;
+}
+
+.tx-chgallery-pi1 .chgallery-list .clr { clear:both; }
+ 
+/************************
+ * GALLERY view 
+ ************************/  
+
+/* Directory browser */
+.tx-chgallery-pi1 .info {
+	margin:5px 10px 15px 10px;
+	padding:3px 6px;
+ 	border:1px solid #D2DCE4;
+ 	background:#E7EDF1;
+}
+
+.tx-chgallery-pi1 .info .position {
+	float:right;
+	font-size:35px;
+	font-style: italic;
+	font-family:Georgia;
+	color:#b8c9d6;
+	margin-right:5px;
+}
+
+.tx-chgallery-pi1 .info .position span {
+	font-size:20px;
+}
+
+.tx-chgallery-pi1 .info span {
+	font-weight:bold;
+}
+
+/* Pagebrowser */
+.tx-chgallery-pi1 .pagebrowser {
+	border-top:1px solid #dde1e4;
+	border-bottom:1px solid #dde1e4;
+	padding:3px 0;	
+	margin:2px 0;
+}
+
+.tx-chgallery-pi1 .pagebrowser .prev {
+	width:20%;
+	float:left;
+}
+
+.tx-chgallery-pi1 .pagebrowser .text {
+	width:60%;
+	float:left;
+	text-align:center;
+}
+
+.tx-chgallery-pi1 .pagebrowser .next {
+	width:20%;
+	float:right;
+	text-align:right;
+}
+
+.tx-chgallery-pi1 .clr { clear:both; }
+
+/* GALLERY single element */
+.tx-chgallery-pi1 .single {
+	background:#f3f4f6;
+	float:left; 
+	padding:3px 1px 2px 1px;
+	margin:5px ;
+}
+
+.tx-chgallery-pi1 .single .img {
+	width:160px;
+	height:126px;
+	background:url(gfx/bg.gif) no-repeat;
+	line-height:126px;
+	position:relative;
+}
+
+.tx-chgallery-pi1 .act .img {
+	background:url(gfx/bgact.gif) no-repeat;
+}
+
+.tx-chgallery-pi1 .single .img .align {
+	width:160px;
+	height:126px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	text-align:center;
+	display:block;
+	margin-top:-53px;
+	margin-left:-80px;
+}
+
+.tx-chgallery-pi1 .single .img img {
+
+}
+
+.tx-chgallery-pi1 .single span {
+	display:block;
+	margin:1px 5px;
+	width:148px;
+	min-height:20px;
+	border:1px solid #f3f4f6;
+	text-align:center;
+}
+
+.tx-chgallery-pi1 .single span  small {
+	font-size:10px;
+}
+
+* html .tx-chgallery-pi1 .single span {
+	height:20px; 
+}
+
+/* small version */
+.tx-chgallery-pi1 .singlesmall img{
+	float:left; 
+	padding:0 1px 2px 1px;
+	margin:0 5px ;
+}
+
+/* Settings for ajax mode */
+.tx-chgallery-pi1 .hide {
+	display:none;
+}
+
+.tx-chgallery-pi1 #chgalleryimg {
+	padding:0 20px;
+}
+
+/* Ajax loading icon  */
+.tx-chgallery-pi1 #chajax {
+	background:#fff url(gfx/ajaxloading.gif) no-repeat center center;
+	position:absolute;
+	height:490px;
+	width:550px;
+	z-index:999;
+	margin:10px 0 0 10px
+	opacity: 0.8;
+	-moz-opacity: 0.8;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=80);
+}
+
+
+/*
+ * accord */
+#chgallery-list {
+	border:1px solid #D2DCE4;
+	border-top:0;
+}
+
+.tx-chgallery-pi1 .chgallery-title {
+	padding:5px 10px;
+	cursor:pointer;
+	font-weight:bold;
+	border-top:1px solid #D2DCE4;
+}
+.tx-chgallery-pi1 .chgallery-content {
+
+}
+.tx-chgallery-pi1 .chgallery-content2 {
+	border-top:1px solid #eee;
+	padding:10px 5px;
+}
