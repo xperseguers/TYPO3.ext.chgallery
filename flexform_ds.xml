@@ -54,10 +54,13 @@
 						<type>popup</type>
 						<title>Folder Selector</title>
 						<icon>link_popup.gif</icon>
-						<script>EXT:rgfolderselector/browse_links.php</script>
+						<script>browse_links.php?mode=wizard&amp;act=folder</script>
+						<params type="array">
+							<blindLinkOptions>page,url,mail,spec,file</blindLinkOptions>
+						</params>
 						<JSopenParams>height=400,width=400,status=0,menubar=0,scrollbars=1</JSopenParams>
 					</link>
-					</wizards>					
+					</wizards>
 				</config>
 				</TCEforms>
 			</path>
@@ -80,7 +83,7 @@
             <type>text</type>
             <cols>40</cols>
             <rows>5</rows>
-            
+
 						<wizards>
 						<_PADDING>2</_PADDING>
 						<link>
@@ -90,8 +93,8 @@
 							<script>EXT:chgallery/wizard/subdir.php</script>
 							<JSopenParams>height=600,width=550,status=1,menubar=1,scrollbars=1</JSopenParams>
 						</link>
-						</wizards>					
-            
+						</wizards>
+
           </config>
         </TCEforms>
       </title>
@@ -123,14 +126,14 @@
 								<numIndex index="0">LLL:EXT:chgallery/locallang_db.xml:categoryOrder.size</numIndex>
 								<numIndex index="1">size</numIndex>
 							</numIndex>
-								
+
 						</items>
 						<maxitems>1</maxitems>
 						<size>1</size>
 					</config>
 				</TCEforms>
 			</categoryOrder>
-	
+
 			<categoryAscDesc>
 				<TCEforms>
           <displayCond>FIELD:show:IN:LIST</displayCond>
@@ -156,7 +159,7 @@
 					</config>
 				</TCEforms>
 			</categoryAscDesc>
-		
+
 			<pagebrowser>
 				<TCEforms>
 				<label>LLL:EXT:chgallery/locallang_db.xml:pagebrowser</label>
@@ -187,11 +190,11 @@
 				</config>
 				</TCEforms>
 			</single>
-											
+
 		</el>
 	</ROOT>
 	</sDEF>
-	
+
 	<more>
 		<ROOT>
 			<TCEforms>
@@ -208,7 +211,7 @@
 					<type>check</type>
 				</config>
 				</TCEforms>
-			</renderAllLinks>		
+			</renderAllLinks>
 
 			<excludeFirstImage>
 				<TCEforms>
@@ -217,7 +220,7 @@
 					<type>check</type>
 				</config>
 				</TCEforms>
-			</excludeFirstImage>	
+			</excludeFirstImage>
 
 
 			<link>
@@ -234,7 +237,7 @@
 					<show_thumbs>1</show_thumbs>
 				</config>
 				</TCEforms>
-			</link>		
+			</link>
 
 			<templateFile>
 				<TCEforms>
@@ -253,11 +256,11 @@
 				</TCEforms>
 			</templateFile>
 
-			
+
 			</el>
 		</ROOT>
 	</more>
-	
+
 	<preview>
 		<ROOT>
 			<TCEforms>
@@ -275,7 +278,7 @@
 					</config>
 				</TCEforms>
 			</preview>
-		
+
 			</el>
 		</ROOT>
 

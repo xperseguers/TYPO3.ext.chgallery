@@ -35,8 +35,8 @@ class tx_chgallery_pi1 extends tslib_pibase {
 	var $scriptRelPath = 'pi1/class.tx_chgallery_pi1.php';	// Path to this script relative to the extension dir.
 	var $extKey        = 'chgallery';	// The extension key.
 	var $pi_checkCHash = true;
-	
-	
+
+
 	/**
 	 * The main method of the PlugIn
 	 *
@@ -55,7 +55,7 @@ class tx_chgallery_pi1 extends tslib_pibase {
 		} else {
 			$content = $this->getGalleryView();
 		}
-	
+
 		return $this->pi_wrapInBaseClass($content);
 	}
 
@@ -63,7 +63,7 @@ class tx_chgallery_pi1 extends tslib_pibase {
 	 * Get the single image view including all kind of information about the image
 	 *
 	 * @return	single image view
-	 */	
+	 */
 	function getSingleView() {
 		$template['total'] = $this->cObj->getSubpart($this->templateCode,'###TEMPLATE_SINGLE###');
 		$dir = $this->piVars['dir'];
@@ -80,7 +80,7 @@ class tx_chgallery_pi1 extends tslib_pibase {
 			$dirList 		= $this->config['subfolders'][$dir-1];
 			$imageList 	= $this->getImagesOfDir($dirList['path']);
 			$imgPos = ($this->config['exclude1stImg'] == 0) ? $singleImage-1 : $singleImage;
-			
+
 			$markerArray = $this->getSingleImageSlice($imageList, $imgPos);
 
 		// get the single image from GALLERY view
@@ -88,8 +88,8 @@ class tx_chgallery_pi1 extends tslib_pibase {
 			$imageList 		= $this->getImagesOfDir($this->config['path']); // get all imgs of the dir
 			$markerArray 	= $this->getSingleImageSlice($imageList, $singleImage-1);
 		}
-		
-		// count=0 means, that this is the LIST view which has no image to load, so hide everything 
+
+		// count=0 means, that this is the LIST view which has no image to load, so hide everything
 		if(count($markerArray)==0) {
 			$subpartArray['###SINGLE_IMAGE###'] = '';
 		}
@@ -98,7 +98,7 @@ class tx_chgallery_pi1 extends tslib_pibase {
 		$linkConf = array();
 		$linkConf['parameter'] = $this->getLinkParameter();
 		$linkConf['useCacheHash'] = 1;
-		
+
 		if ($singleImage > 1) {
 			$override = $this->piVars;
 			$override['single'] = $singleImage-1;
@@ -108,7 +108,7 @@ class tx_chgallery_pi1 extends tslib_pibase {
 				$override['pointer'] = $override['pointer']-1;
 				if ($override['pointer']==0) $override['pointer'] = ''; // if value 0, set it to '' to avoid showing 0 in the url
 			}
-			
+
 			// change param array to string
 			foreach ($override as $key=>$value) {
 				if ($key!='') $linkConf['additionalParams'].= '&tx_chgallery_pi1['.$key.']='.$value;
@@ -117,7 +117,7 @@ class tx_chgallery_pi1 extends tslib_pibase {
 			$markerArray['###PREV###'] = $this->cObj->typolink($this->pi_getLL('previousImage'), $linkConf);
 		} else {
 			$markerArray['###PREV###'] = '';
-		} 
+		}
 
 		// pagebrowser: NEXT image
 		if ($singleImage < count($imageList)) {
@@ -128,24 +128,24 @@ class tx_chgallery_pi1 extends tslib_pibase {
 			$pointer = ($this->piVars['pointer'] ==0) ? 1 : $this->piVars['pointer'];
 			if (($override['single']/$this->config['pagebrowser']) > $pointer   ) {
 				$override['pointer'] = $override['pointer']+1;
-			}	
-			
+			}
+
 			// change param array to string
 			foreach ($override as $key=>$value) {
 				if ($key!='') $linkConf['additionalParams'].= '&tx_chgallery_pi1['.$key.']='.$value;
-			}	
+			}
 
 			$markerArray['###NEXT###'] = $this->cObj->typolink($this->pi_getLL('nextImage'), $linkConf);
 		} else {
 			$markerArray['###NEXT###'] = '';
 		}
-		
+
 		// hide exif
 		if ($markerArray['###EXIF###']=='') {
 			$subpartArray['###EXIF###'] = '';
-		} 
-		
-		$content.= $this->cObj->substituteMarkerArrayCached($template['total'], $markerArray, $subpartArray);	
+		}
+
+		$content.= $this->cObj->substituteMarkerArrayCached($template['total'], $markerArray, $subpartArray);
 		return $content;
 	}
 
@@ -160,11 +160,11 @@ class tx_chgallery_pi1 extends tslib_pibase {
 	function getSingleImageSlice($imageList, $pos, $hideFirst=false) {
 		$finalImage = array_slice($imageList, $pos, 1); // get the only image
 		$finalImage = array_values($finalImage); // get the value=path
-		
+
 		$marker = $this->getImageMarker($finalImage[0], $pos, 'single', count($imageList));
-		
+
 		return $marker;
-	} 
+	}
 
 	/**
 	 * Get all information about a single image by reading its exif info, description,...
@@ -175,39 +175,39 @@ class tx_chgallery_pi1 extends tslib_pibase {
 	 * @param	int		$count: Count of the images in the dir
 	 * @return	array Every information about this image filled in markers
 	 */
-	
+
 	function getImageMarker($path, $pos, $view, $count) {
 		$marker = array();
-		
+
 		if (!is_file($path)) {
 			return $marker;
 		}
 
 		$conf = $this->conf[$view.'.']; // shortcut to the TS configuration of the current view
-	
+
 		// single image TS configuration
 		$singleImageConf = $conf['image.'];
 		$singleImageConf['file'] = $path;
-		$description = str_replace('"','\'',$this->getDescription($path, 'file')); 
+		$description = str_replace('"','\'',$this->getDescription($path, 'file'));
 		$singleImageConf['altText'] = $description;
-		
+
 		// Adds hook for processing of cObj->data to use it via TS later with field = ...
 		$data = array();
 		$data['Title'] 		= $description;
 		$data['File'] 		= $path;
 		$data['Filename']	= basename($path);
- 
+
 		if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['chgallery']['extraItemDataHook'])) {
 			foreach($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['chgallery']['extraItemDataHook'] as $_classRef) {
 				$_procObj = & t3lib_div::getUserObj($_classRef);
 				$data = $_procObj->extraItemDataProcessor($data, $path, $pos, $view, $this);
 			}
 		}
-		
+
 		foreach($data as $key=>$value) {
 			$this->cObj->data['tx_chgallery'.$key]	= $value;
 		}
-		
+
 		// fill the markers
 		$marker['###IMAGE###'] = $this->cObj->IMAGE($singleImageConf);
 		$marker['###DESCRIPTION###'] = $this->cObj->stdWrap($description, $conf['description.']);
@@ -221,11 +221,11 @@ class tx_chgallery_pi1 extends tslib_pibase {
 			$exif_array = @exif_read_data( $path, true, false ); // Load all EXIF informations from the original Pic in an Array
 			$marker['###EXIF###'] = '1';
 			$marker['###EXIF_SIZE###'] =  $this->cObj->stdWrap($exif_array['FileSize'], $conf['exif_size.']);
-			$marker['###EXIF_TIME###'] =  $this->cObj->stdWrap($exif_array['FileDateTime'], $conf['exif_time.']);			
+			$marker['###EXIF_TIME###'] =  $this->cObj->stdWrap($exif_array['FileDateTime'], $conf['exif_time.']);
 		} else {
 			$marker['###EXIF###'] = '';
 		}
-		
+
 		// language markers
 		$tmpValues = array('description', 'download', 'exif_size', 'exif_time', 'filename');
 		foreach($tmpValues as $key) {
@@ -235,26 +235,26 @@ class tx_chgallery_pi1 extends tslib_pibase {
 		// ratings
 		if (t3lib_extMgm::isLoaded('ratings') && $this->conf['ratings']==1) {
 			$fileName = (strlen($path) < 244) ? $path : substr($path, -240);
-	           	      
+
 			$this->rate['conf']['ref'] = 'chgallery' . ($fileName);
 			$marker['###RATINGS###'] = $this->ratecObj->cObjGetSingle('USER_INT', $this->rate['conf']);
 		} else {
 			$marker['###RATINGS###'] = '';
-		}	
-		
+		}
+
 		// Adds hook for processing of extra item markers
 		if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['chgallery']['extraItemMarkerHook'])) {
 			foreach($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['chgallery']['extraItemMarkerHook'] as $_classRef) {
 				$_procObj = & t3lib_div::getUserObj($_classRef);
 				$marker = $_procObj->extraItemMarkerProcessor($marker, $path, $pos, $view, $this);
 			}
-		}				
-		
+		}
+
 		return $marker;
 	}
 
 	function getExtraVars() {
-		$vars = '';		
+		$vars = '';
 		// add extra get vars to the links
 		if ($this->conf['extraAdditionalParams']) {
 			$tmpList = t3lib_div::trimExplode(',', $this->conf['extraAdditionalParams']);
@@ -271,7 +271,7 @@ class tx_chgallery_pi1 extends tslib_pibase {
 	 * Get a list of all subdirs including preview and link to single view
 	 *
 	 * @return	The list
-	 */	
+	 */
 	function getCategoryView() {
 		$template['total'] = $this->cObj->getSubpart($this->templateCode,'###TEMPLATE_LIST###');
 		$template['item'] = $this->cObj->getSubpart($template['total'],'###ITEM###');
@@ -286,85 +286,85 @@ class tx_chgallery_pi1 extends tslib_pibase {
 				$markerArray['###LL_'.strtoupper($mKey).'###'] 	= $this->pi_getLL($mKey);
 			}
 			$markerArray['###ZEBRA###']		= ($key%2==0) ? 'odd' : 'even';
-			
-			// preview image 
+
+			// preview image
 			$imgageConf = $this->conf['category.']['image.'];
 			$imgageConf['file'] = $this->getImagesOfDir($value['path'], true);
 			$markerArray['###IMAGE###'] = $this->cObj->IMAGE($imgageConf);
-			
+
 			// create the link to the dir
 			$linkConf = $this->conf['category.']['link.'];
 			$linkConf['parameter'] = $this->getLinkParameter();
 
-					
+
 			$linkConf['additionalParams'] = $this->getExtraVars.'&tx_chgallery_pi1[dir]='.($key+1);
 			$linkConf['title'] = $value['title'];
 			$wrappedSubpartArray['###LINK_ITEM###'] = explode('|', $this->cObj->typolink('|', $linkConf));
-			
+
 			$content_item .= $this->cObj->substituteMarkerArrayCached($template['item'], $markerArray, $array, $wrappedSubpartArray);
   	}
-  	
+
   	// put everything into the template
-		$subpartArray['###CONTENT###'] = $content_item;	
-		
+		$subpartArray['###CONTENT###'] = $content_item;
+
 		// add cooliris image
 		if ($this->conf['cooliris']==1) {
 			$markerArray['###COOLIRIS_START###'] = $this->pi_getLL('cooliris');
 		} else {
 			$subpartArray['###COOLIRIS###'] = '';
-		}		
+		}
 
-		$content.= $this->cObj->substituteMarkerArrayCached($template['total'], $markerArray, $subpartArray);	
+		$content.= $this->cObj->substituteMarkerArrayCached($template['total'], $markerArray, $subpartArray);
 		return $content;
 	}
 
-	
+
 	/**
-	 * Get all images of a directory or just the 1st 	 
+	 * Get all images of a directory or just the 1st
 	 *
 	 * @param	string		$path: Path of the dir
 	 * @param	boolean		$firstOnly: If true, return the 1st image
 	 * @return	array/text of images
-	 */	
+	 */
 	function getImagesOfDir($path, $firstOnly=false) {
 		$imageList = t3lib_div::getFilesInDir($path, $this->conf['fileTypes'],1,1);
 		if ($firstOnly) {
 			return array_shift($imageList);
 		}
-		
-		return $imageList;	
+
+		return $imageList;
 	}
 
 
 	/**
 	 * Get all subdirectories of a dir including information about the content
-	 * Only dirs with images in it are taken	 
+	 * Only dirs with images in it are taken
 	 *
 	 * @param	string		$path: Path of the dir
 	 * @return	array with the images, the dir title/descriptin
-	 */		
+	 */
 	function getFullDir($path) {
-		$dir = t3lib_div::get_dirs($path);	
+		$dir = t3lib_div::get_dirs($path);
 		$newdir = array();
 		$titleList = explode(chr(10), $this->config['listTitle']);
 		$i = 0;
 		if(is_array($dir) && !empty($dir)) {
-		
+
 
       // sort directories in ascending order to assure appropriate category title and description assignment
 			array_multisort($dir, SORT_ASC, SORT_STRING);
 
 			foreach ($dir as $key=>$value) {
-				
+
 				$size = $this->getImagesOfDir($path.$value.'/');
-				
+
 
 
 				// if exclude is set, empty means one image
 				$empty = ($this->config['exclude1stImg']==1) ? 1 : 0;
-				
+
 				// check if there are images in it
-				
+
 				if (count($size)<=$empty) {
 					unset($dir[$key]);
 				} else {
@@ -394,14 +394,14 @@ class tx_chgallery_pi1 extends tslib_pibase {
 				#$this->sortByDate($newdir, 'datedesc');
 				array_multisort($sort_arr['date'], SORT_DESC, $newdir);
 			} else {
-				
+
 				#array_multisort($newdir, $sort , SORT_STRING);
 				array_multisort($sort_arr['title'], $sort, $newdir);
 			}
-			
+
 			*/
 			$sort = ($this->config['categoryOrderAscDesc']=='asc') ? SORT_ASC : SORT_DESC;
-			
+
 			// check for old settings
 			if (array_key_exists($this->config['categoryOrder'], array('asc' => 1, 'desc' => 1, 'dateasc' =>1, 'datedesc' =>1))) {
 				$this->config['categoryOrder'] = 'path';
@@ -409,32 +409,32 @@ class tx_chgallery_pi1 extends tslib_pibase {
 
 			array_multisort($sort_arr[$this->config['categoryOrder']], $sort, $newdir);
 		}
-		
+
 		return $newdir;
 	}
 
-	
+
 	/**
 	 * Get a single gallery
 	 *
 	 * @return	Whole gallery
-	 */	
-	function getGalleryView() {		
+	 */
+	function getGalleryView() {
 			// if page browser needs to be used
 		if (!isset($this->piVars['pointer'])) {
 			$pb = 0 ;
 		} else {
 			$pb = intval($this->piVars['pointer']);
-		}	
-		
-		// page browser 
+		}
+
+		// page browser
 		$begin 	= $pb * $this->config['pagebrowser'];
 		$end 		= $begin + $this->config['pagebrowser'];
 
 		$content = $this->getSingleGalleryPage($pb, $begin, $end);
 		return $content;
 	}
-	
+
 
 	/**
 	 * Get a gallery page
@@ -444,13 +444,13 @@ class tx_chgallery_pi1 extends tslib_pibase {
 	 * @param	int		$end: End of the pagebrowser
 	 * @param	boolean		$ajax: If ajax is used
 	 * @return	array/text of images
-	 */	
+	 */
 	function getSingleGalleryPage($pb, $begin, $end, $ajax=0) {
 		// templates
 		$ajaxTemplateSuffix = ($ajax==1) ? '_AJAX' : '';
 		$template['total'] = $this->cObj->getSubpart($this->templateCode,'###TEMPLATE'.$ajaxTemplateSuffix.'###');
 		$template['item'] = $this->cObj->getSubpart($template['total'],'###ITEM###');
-	
+
 		// get all infos we need
 		// if LIST view, get the information about the category
 		if ($this->config['show']=='LIST' && $this->piVars['dir']!=0) {
@@ -459,19 +459,19 @@ class tx_chgallery_pi1 extends tslib_pibase {
 			$dirKey--;
  			$subDir = $this->config['subfolders'][$dirKey];
 			$path = $subDir['path'];
-			
+
 			foreach ($subDir as $key=>$value) {
 				$markerArray['###DIR_'.strtoupper($key).'###'] = $this->cObj->stdWrap($subDir[$key], $this->conf['gallery.']['dir_'.$key.'.']);
-				$markerArray['###LL_'.strtoupper($key).'###']  = $this->pi_getLL($key);			
+				$markerArray['###LL_'.strtoupper($key).'###']  = $this->pi_getLL($key);
 			}
 
 			$backLink = array();
 			$backLink['parameter'] = $GLOBALS['TSFE']->id;
 			$markerArray['###DIR_BACK###'] = $this->cObj->typolink($this->pi_getLL('dir_back'), $backLink);
-			
+
 		} else {
 			$path =$this->config['path'];
-			
+
 			// hide the subdir part
 			$subpartArray['###SUBDIR_NAVIGATION###'] = '';
 		}
@@ -488,31 +488,31 @@ class tx_chgallery_pi1 extends tslib_pibase {
 		if (count($imageList)==0) {
 			return '';
 		}
-		
+
 		// create the page browser and the links
 		$count 	= count($imageList);
 		$totalPages = ceil($count/$this->config['pagebrowser']);
 
 		// get the markers of the pagebrowser
 		$markerArray = $this->getPageBrowserMarkers($markerArray, count($imageList),$this->config['pagebrowser']);
-		
+
 		$linkToDir.= $this->getExtraVars();
-		
+
 		// if image of the single view should be passed through the page browsers link
 		$singleImage = $this->piVars['single'];
 		if ($singleImage>0 && $this->conf['single.']['pass']==1) {
 			$linkToDir.= '&tx_chgallery_pi1[single]='.$singleImage;
 		}
-		
-		
 
-		
+
+
+
 		// create the links for the pagebrowser
 		$linkConf = $this->conf['link.'];
 		$linkConf['parameter'] = $this->getLinkParameter();
 		$linkConf['useCacheHash'] = 1;
  		$linkConf['additionalParams'] = $linkToDir;
-		
+
 		// first
 		$linkConf['title'] = $this->pi_getLL('pi_list_browseresults_first');
 		$markerArray['###FIRST###'] = $this->cObj->typolink($this->pi_getLL('pi_list_browseresults_first'), $linkConf);
@@ -520,27 +520,27 @@ class tx_chgallery_pi1 extends tslib_pibase {
 		$linkConf['title'] = $this->pi_getLL('pi_list_browseresults_last');
 		$linkConf['additionalParams'] = $linkToDir.'&tx_chgallery_pi1[pointer]='.($totalPages-1);
 		$markerArray['###LAST###'] = $this->cObj->typolink($this->pi_getLL('pi_list_browseresults_last'), $linkConf);
-		
+
 		// next
 		if ($pb+1 < $totalPages) {
 			$linkConf['title'] = $this->pi_getLL('pi_list_browseresults_next');
 			$linkConf['additionalParams'] = $linkToDir.'&tx_chgallery_pi1[pointer]='.($pb+1);
-			$markerArray['###NEXT###'] = $this->cObj->typolink($this->pi_getLL('pi_list_browseresults_next'), $linkConf); 
+			$markerArray['###NEXT###'] = $this->cObj->typolink($this->pi_getLL('pi_list_browseresults_next'), $linkConf);
 		} else {
-			$markerArray['###NEXT###'] = '';		
+			$markerArray['###NEXT###'] = '';
 		}
-		
+
 		// prev
 		$linkConf['title'] = $this->pi_getLL('pi_list_browseresults_prev');
 		if ($pb>1) {
 			$linkConf['additionalParams'] = $linkToDir.'&tx_chgallery_pi1[pointer]='.($pb-1);
-			$markerArray['###PREV###'] = $this->cObj->typolink($this->pi_getLL('pi_list_browseresults_prev'), $linkConf); 
+			$markerArray['###PREV###'] = $this->cObj->typolink($this->pi_getLL('pi_list_browseresults_prev'), $linkConf);
 		} elseif ($pb==1) {
-			$linkConf['additionalParams'] = $linkToDir.'';		
+			$linkConf['additionalParams'] = $linkToDir.'';
 			$markerArray['###PREV###'] = $this->cObj->typolink($this->pi_getLL('pi_list_browseresults_prev'), $linkConf);
 		} elseif ($this->conf['ajax']==1) {
-			$linkConf['additionalParams'] = $linkToDir.'';	
-			$linkConf['ATagParams'] = 'class="hide"';	
+			$linkConf['additionalParams'] = $linkToDir.'';
+			$linkConf['ATagParams'] = 'class="hide"';
 			$markerArray['###PREV###'] = '&nbsp;'.$this->cObj->typolink($this->pi_getLL('pi_list_browseresults_prev'), $linkConf);
 		} else {
 			$markerArray['###PREV###'] = '&nbsp;';
@@ -549,7 +549,7 @@ class tx_chgallery_pi1 extends tslib_pibase {
 		// max used pages
 		$markerArray['###PAGEBROWSERPAGES###'] = $totalPages;
 
-		// ajax url			
+		// ajax url
 		$actionConf = array();
 #		$actionConf['parameter'] = $GLOBALS['TSFE']->id;
 #		$actionConf['additionalParams'] = $linkToDir.'&type=9712';
@@ -558,10 +558,10 @@ class tx_chgallery_pi1 extends tslib_pibase {
 		$markerArray['###AJAXURL###'] = $this->cObj->typolink('',$actionConf);
 		// include ajax script
 		$markerArray['###AJAXSCRIPT###'] = '<script  src="'.$GLOBALS['TSFE']->tmpl->getFileName($this->conf['ajaxScript']).'" type="text/javascript"></script>';
-		
+
 		$markerArray['###LINKSBEFORE###'] = '';
 		$markerArray['###LINKSAFTER###'] = '';
-		
+
 		// add cooliris image
 		if ($this->conf['cooliris']==1) {
 			$markerArray['###COOLIRIS_START###'] = $this->pi_getLL('cooliris');
@@ -570,44 +570,44 @@ class tx_chgallery_pi1 extends tslib_pibase {
 		}
 
 
-		
+
 		// merge image + description to be able to sort them and not loosing the relation between them
 		$allList = array();
 		$j=0;
 		foreach ($imageList as $key=>$value) {
   		$allList[$j]['file'] = $value;
   		$j++;
-  	}	
-  	
+  	}
+
   	// Random mode, get a randomized array
 		// Use plugin.tx_chgallery_pi1 = USER_INT !
 		if ($this->config['random']==1) {
-		
+
 			// hide the subdir part
 			$subpartArray['###PAGEBROWSER###'] = '';
-		
+
 			$randomImageList = $this->getSlicedRandomArray($allList, $begin, $this->config['pagebrowser'] );
 			$newImageList = $randomImageList['random'];
-			
-			// if all links should be renderd, all other links are after the existing images and 
+
+			// if all links should be renderd, all other links are after the existing images and
 			// need to be taken from the same function because of the randomizing
 			if ($this->config['renderAllLinks']==1) {
 				 $markerArray['###LINKSAFTER###'] = $this->getRenderAllLinks($randomImageList['after']);
 			}
-			
+
 		} else {
 			// just get the elements we need
 			$newImageList = array_slice($allList, $begin,$this->config['pagebrowser'] );
 		}
-		
+
 			// config of the single image & check for usage of link
 		$imageConf = $this->conf['gallery.']['image.'];
 		if ($this->config['link']!='') {
 			$imageConf['stdWrap.']['typolink.'] = $this->conf['link.'];
 			$imageConf['stdWrap.']['typolink.']['parameter'] = $this->config['link'];
 			unset($imageConf['imageLinkWrap']);
-		} 
-		
+		}
+
 		// render the link before/after the current page
 		// if random ==1, the links are rendered some lines before
 		if ($this->config['renderAllLinks']==1 && $this->config['random']!=1) {
@@ -615,16 +615,16 @@ class tx_chgallery_pi1 extends tslib_pibase {
 			$prevImgList = array_slice($allList, 0, $begin);
 
 			$markerArray['###LINKSBEFORE###'].= $this->getRenderAllLinks($prevImgList);
-		
+
 			// after images, from current page + number of images at this page to the end
 			$beginForAfterImg = ($begin + $this->config['pagebrowser']) ;
-			$endForAfterImg = ($count - $beginForAfterImg); 
+			$endForAfterImg = ($count - $beginForAfterImg);
 
 			$afterImgList = array_slice($allList, $beginForAfterImg, $endForAfterImg);
 			$markerArray['###LINKSAFTER###'].= $this->getRenderAllLinks($afterImgList);
-		} 		
+		}
 
-	
+
 		// create the gallery
 		foreach ($newImageList as $key=>$singleImage) {
 			// if single view, render a different link
@@ -634,28 +634,28 @@ class tx_chgallery_pi1 extends tslib_pibase {
 				if ($this->piVars['dir']>0) {
 					$imageConf['stdWrap.']['typolink.']['additionalParams'].= '&tx_chgallery_pi1[dir]='.$this->piVars['dir'];
 				}
-				
+
 				if ($pb>0) {
 					$imageConf['stdWrap.']['typolink.']['additionalParams'].= '&tx_chgallery_pi1[pointer]='.$pb;
 				}
 				$imageConf['stdWrap.']['typolink.']['parameter'] = $GLOBALS['TSFE']->id;
-				$imageConf['stdWrap.']['typolink.']['useCacheHash'] = 1;		
+				$imageConf['stdWrap.']['typolink.']['useCacheHash'] = 1;
 				unset($imageConf['imageLinkWrap']);
-			}			
+			}
 
 			$imageConf['file'] = $singleImage['file'];
-			$description = str_replace('"','\'',$this->getDescription($singleImage['file'], 'file')); 
+			$description = str_replace('"','\'',$this->getDescription($singleImage['file'], 'file'));
 			$imageConf['altText'] = $description;
-	
+
 			$markerArrayImage = $this->getImageMarker($singleImage['file'], $key+1, 'gallery', $count);
 	  	$markerArrayImage['###IMAGE###'] = $this->cObj->IMAGE($imageConf);
-	  	
+
 	  	// hide exif
 	  	if ($markerArrayImage['###EXIF###']=='') {
 				$subpartArray['###EXIF###'] = '';
 			}
-	  	
-	  	// get the current image 
+
+	  	// get the current image
 	  	$currentImgId = ($this->piVars['pointer']*$this->config['pagebrowser']) + $key+1 ;
 	  	if ($currentImgId==$this->piVars['single'] && $this->piVars['single'] > 1 ) {
 				$markerArrayImage['###ACT###'] = ' act';
@@ -663,20 +663,20 @@ class tx_chgallery_pi1 extends tslib_pibase {
 				$markerArrayImage['###ACT###'] = '';
 			}
 
-			
+
 			$content_item .= $this->cObj->substituteMarkerArrayCached($template['item'], $markerArrayImage, $subpartArray);
   	}
-  	
+
   	// put everything into the template
 		$subpartArray['###CONTENT###'] = $content_item;
-		
+
 		// Adds hook for processing of extra item markers
 		if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['chgallery']['extraGalleryPageMarkerHook'])) {
 			foreach($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['chgallery']['extraGalleryPageMarkerHook'] as $_classRef) {
 				$_procObj = & t3lib_div::getUserObj($_classRef);
 				$markerArray = $_procObj->extraItemMarkerProcessor($markerArray, $path, $pb, $this);
 			}
-		}			
+		}
 
 		$content.= $this->cObj->substituteMarkerArrayCached($template['total'], $markerArray, $subpartArray);
 		return $content;
@@ -687,7 +687,7 @@ class tx_chgallery_pi1 extends tslib_pibase {
 	 * Get the correct parameter for the links
 	 *
 	 * @return either the ID or the anchor
-	 */		
+	 */
 	function getLinkParameter() {
 		$link = '';
 		if ($this->conf['useAnchor']==1) {
@@ -705,7 +705,7 @@ class tx_chgallery_pi1 extends tslib_pibase {
 	 *
 	 * @param	array  $imgList: Array with the images
 	 * @return all links next to each other
-	 */		
+	 */
 	function getRenderAllLinks($imgList) {
 		$links = '';
 		$imageConf = $this->conf['gallery.']['renderAllLinks.'];
@@ -721,7 +721,7 @@ class tx_chgallery_pi1 extends tslib_pibase {
 		}
 		return $links;
 	}
-		
+
 
 	/**
 	 * Get the content of a txt file which serves as description
@@ -730,7 +730,7 @@ class tx_chgallery_pi1 extends tslib_pibase {
 	 * @param	string		$path: Path of the dir
 	 * @param	string		$type: Type of txt
 	 * @return	the description
-	 */	
+	 */
 	function getDescription($path, $type='') {
 		$multilingual = ($GLOBALS['TSFE']->sys_language_uid > 0) ? '-'.$GLOBALS['TSFE']->sys_language_uid : '';
 
@@ -739,14 +739,14 @@ class tx_chgallery_pi1 extends tslib_pibase {
 		} else {	// description of a file
 			$file = $path.$multilingual.'.txt';
 		}
-		
+
 		if (is_file($file)) {
 			$text = file_get_contents($file);
-		}		
+		}
 		return $text;
 	}
-	
-	
+
+
 	/**
 	 * Get the internal page browser
 	 *
@@ -754,7 +754,7 @@ class tx_chgallery_pi1 extends tslib_pibase {
 	 * @param	int  $count: Maximum count of elements
 	 * @param	int  $limit: how many elements displayed
 	 * @return markerarray with the pagebrowser
-	 */	
+	 */
 	function getPageBrowserMarkers($marker, $count,$limit) {
 		$this->internal['res_count']=$count;
 		$this->internal['results_at_a_time']=$limit;
@@ -772,11 +772,11 @@ class tx_chgallery_pi1 extends tslib_pibase {
 			'inactiveLinkWrap' => '|',
 			'activeLinkWrap' => '|'
 		);
-		
+
 		$marker['###PAGEBROWSER###']=$this->pi_list_browseresults(0,'',$wrapArr, 'pointer', FALSE);
-		$marker['###PAGEBROWSERTEXT###']=$this->pi_list_browseresults(2,'',$wrapArr, 'pointer', FALSE);       
+		$marker['###PAGEBROWSERTEXT###']=$this->pi_list_browseresults(2,'',$wrapArr, 'pointer', FALSE);
 		return $marker;
-	}	
+	}
 
 	/**
 	 * Random view of an array and slice it afterwards, preserving the keys
@@ -795,7 +795,7 @@ class tx_chgallery_pi1 extends tslib_pibase {
       unset($array[$val]);
     }
     $result=$new_arr;
-    
+
     // slice
     $result2 = array();
     $i = 0;
@@ -807,7 +807,7 @@ class tx_chgallery_pi1 extends tslib_pibase {
         $endOffset = count($result) + $length;
     else
         $endOffset = count($result);
-   
+
     // collect elements
     foreach($result as $key=>$value)
     {
@@ -816,11 +816,11 @@ class tx_chgallery_pi1 extends tslib_pibase {
         } else {
           $result2['after'][$key] = $value;
         }
-            
+
         $i++;
     }    return $result2;
-  }       	
-	
+  }
+
 
 	/**
 	 * The whole preconfiguration: Get the flexform values
@@ -829,16 +829,16 @@ class tx_chgallery_pi1 extends tslib_pibase {
 	 * @return	void
 	 */
 	function init($conf) {
-		$this->conf=$conf;		
+		$this->conf=$conf;
 		$this->pi_loadLL(); // Loading language-labels
 		$this->pi_setPiVarDefaults(); // Set default piVars from TS
 		$this->pi_initPIflexForm(); // Init FlexForm configuration for plugin
-		
+
 		// security check, pivars only need integers
 		foreach($this->piVars as $key=>$value) {
 			$this->piVars[$key] = intval($value);
 		}
-		
+
 		// add the flexform values
 		$this->config['show']					= strtoupper($this->getFlexform('', 'show', 'mode'));
 		$this->config['path']		 			= $this->checkPath($this->getFlexform('', 'path', 'path'));
@@ -847,18 +847,18 @@ class tx_chgallery_pi1 extends tslib_pibase {
 		$this->config['random'] 			= ($this->getFlexform('', 'random', 'random') && $this->config['show']=='GALLERY') ? 1 : 0;
 		$this->config['listTitle']		= $this->getFlexform('', 'title', 'title');
 		$this->config['single']				= $this->getFlexform('', 'single', 'single');
-		$this->config['exclude1stImg']	= (intval($this->getFlexform('more', 'excludeFirstImage', 'gallery.excludeFirstImage'))) ? 1 : 0;		
+		$this->config['exclude1stImg']	= (intval($this->getFlexform('more', 'excludeFirstImage', 'gallery.excludeFirstImage'))) ? 1 : 0;
 		$this->config['categoryOrder']	= $this->getFlexform('', 'categoryOrder', 'categoryOrder');
 		$this->config['categoryOrderAscDesc'] = $this->getFlexform('', 'categoryAscDesc', 'categoryOrderAscDesc');
-		
+
 
 		// additional options
 		$this->config['renderAllLinks']	= intval($this->getFlexform('more', 'renderAllLinks', 'gallery.renderAllLinks'));
 		$this->config['link'] 				= $this->getFlexform('more', 'link', 'link');
-		
+
 		// create an array of subfolders
 		$this->config['subfolders'] = $this->getFullDir($this->config['path']);
-		
+
     // Template+  CSS file
     $template = ($this->getFlexform('more', 'templateFile')) ? 'uploads/tx_chgallery/'.$this->getFlexform('more', 'templateFile') : $conf['templateFile'];
 		$this->templateCode = $this->cObj->fileResource($template);
@@ -874,26 +874,26 @@ class tx_chgallery_pi1 extends tslib_pibase {
 				// include mootools library
 			if (t3lib_extMgm::isLoaded('t3mootools'))    {
 			 require_once(t3lib_extMgm::extPath('t3mootools').'class.tx_t3mootools.php');
-			} 	 
+			}
 			if (defined('T3MOOTOOLS')) {
 				tx_t3mootools::addMooJS();
 			} else {
 			  $GLOBALS['TSFE']->additionalHeaderData['chgallery'].= $this->getPath($this->conf['pathToMootools']) ?  '<script src="'.$GLOBALS['TSFE']->tmpl->getFileName($this->conf['pathToMootools']).'" type="text/javascript"></script>' :'';
-			}  
+			}
 		}
 
 		// configuration for ratings
 		if (t3lib_extMgm::isLoaded('ratings') && $this->conf['ratings']==1) {
 			require_once(t3lib_extMgm::extPath('ratings', 'class.tx_ratings_api.php'));
 
-			$apiObj = t3lib_div::makeInstance('tx_ratings_api');			
+			$apiObj = t3lib_div::makeInstance('tx_ratings_api');
 			$ratingsTSConf = (is_array($this->conf['ratings.'])) ? $this->conf['ratings.'] : array();
 			$this->rate['conf'] = t3lib_div::array_merge($apiObj->getDefaultConfig(), $ratingsTSConf);
 			$this->rate['conf']['includeLibs'] = 'EXT:ratings/pi1/class.tx_ratings_pi1.php';
 			$this->ratecObj = t3lib_div::makeInstance('tslib_cObj');
 			$this->ratecObj->start(array());
 		}
-		
+
 		// enable cooliris rss feed
 		if ($this->conf['cooliris']==1) {
 			// link to the ress feed
@@ -907,15 +907,15 @@ class tx_chgallery_pi1 extends tslib_pibase {
 			if ($this->piVars['dir']!=0 && $this->conf['cooliris.']['showAllGalleriesInCategory']!=1) {	// Add the dir parameter if available and allowed
 				$linkConf['additionalParams'] .= '&tx_chgallery_pi1[dir]='.$this->piVars['dir'];
 			}
-			
+
 			// generate the link, if set with a prefix
 			$coolirisLink = $this->conf['cooliris.']['link.']['prefix'].$this->cObj->typolink('', $linkConf);
-			
+
 			$GLOBALS['TSFE']->additionalHeaderData['cooliris_rss'] .= '<link rel="alternate" href="' . $coolirisLink . '" type="application/rss+xml" title="" />';
 			$GLOBALS['TSFE']->additionalHeaderData['cooliris_js'] = '<script type="text/javascript" src="http://lite.piclens.com/current/piclens.js"></script>';
 
 		}
-			
+
 	}
 
 
@@ -924,24 +924,38 @@ class tx_chgallery_pi1 extends tslib_pibase {
 	 *
 	 * @param	string		$path: Path which is checked
 	 * @return	string	valid path
-	 */	
+	 */
 	function checkPath($path) {
 		$path = trim($path);
+
+		if (preg_match('/^file:(\d+):(.*)$/', $path, $matches)) {
+			/** @var $storageRepository \TYPO3\CMS\Core\Resource\StorageRepository */
+			$storageRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\StorageRepository');
+			/** @var $storage \TYPO3\CMS\Core\Resource\ResourceStorage */
+			$storage = $storageRepository->findByUid(intval($matches[1]));
+			$storageRecord = $storage->getStorageRecord();
+			$storageConfiguration = $storage->getConfiguration();
+			if ($storageRecord['driver'] === 'Local') {
+				$basePath = rtrim($storageConfiguration['basePath'], '/') . '/';
+				$path = $basePath . substr($matches[2], 1);
+			}
+		}
+
 		if (!t3lib_div::validPathStr($path)) {
 			return '';
 		}
-		
+
 		if (substr($path,-1)!='/') { // check for needed / at the end
       $path =  $path.'/';
 		}
-		
+
 		if (substr($path, 0, 1) =='/') { // check for / at the beginning
 			$path = substr($path, 1, strlen($path));
 		}
 
 		return $path;
 	}
-	
+
 
 	/**
 	 * Get the value out of the flexforms and if empty, take if from TS
@@ -955,12 +969,12 @@ class tx_chgallery_pi1 extends tslib_pibase {
 		// Default sheet is sDEF
 		$sheet = ($sheet=='') ? $sheet = 'sDEF' : $sheet;
 		$flexform = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], $key, $sheet);
-		
+
 		// possible override through TS
 		if ($confOverride=='') {
 			return $flexform;
 		} else {
-			
+
 			// hack to work with multiple TS arrays
 			$tsparts = explode('.', $confOverride);
 			if (count($tsparts)==1) { // default with no .
@@ -970,11 +984,11 @@ class tx_chgallery_pi1 extends tslib_pibase {
 				$value = $flexform ? $flexform : $this->conf[$tsparts[0].'.'][$tsparts[1]];
 				$value = $this->cObj->stdWrap($value,$this->conf[$tsparts[0].'.'][$tsparts[1].'.']);
 			}
-			
+
 			return $value;
 		}
-	} 
-	
+	}
+
 
 	/**
 	 * The xml method of the PlugIn. Used for the ajax connection to get the gallery pages
@@ -983,19 +997,19 @@ class tx_chgallery_pi1 extends tslib_pibase {
 	 * @param	array		$conf: The PlugIn configuration
 	 * @return	The single gallery page
 	 */
-	function xmlFunc($content,$conf)	{		
+	function xmlFunc($content,$conf)	{
 		$this->init($conf);
 
 		if ($this->conf['ajax']==1) {
 			$pb = intval(t3lib_div::_GP('pb'));
-	
-				// page browser 
+
+				// page browser
 			$begin 	= $pb * $this->config['pagebrowser'];
 			$end 		= $begin + $this->config['pagebrowser'];
 			$this->piVars['pointer'] = $pb;
-	
+
 			$content = $this->getSingleGalleryPage($pb, $begin, $end, $ajax=1);
-			
+
 			$xml .= '<tab>'.$content.'</tab>';
 		} else {
 			$xml .= '<p><b>Ajax is not activated!</b></p>';
@@ -1017,7 +1031,7 @@ class tx_chgallery_pi1 extends tslib_pibase {
 		} elseif($sort == 'datedesc') {
 			usort( $dirs, array(&$this, 'dateDESC') );
 		}
-	}	
+	}
 
 
 	/**
@@ -1026,7 +1040,7 @@ class tx_chgallery_pi1 extends tslib_pibase {
 	 * @param	int		$a: date 1
 	 * @param	int		$b: date 3
 	 * @return	correct sorting
-	 */	
+	 */
 	function dateASC($a, $b) {
 		return ($a['date'] < $b['date']) ? -1 : 1;
 	}
@@ -1038,12 +1052,12 @@ class tx_chgallery_pi1 extends tslib_pibase {
 	 * @param	int		$a: date 1
 	 * @param	int		$b: date 3
 	 * @return	correct sorting
-	 */	
+	 */
 	function dateDESC($a, $b) {
 		return ($a['date'] > $b['date']) ? -1 : 1;
 	}
 
-		
+
 	/***************************************
 	     P I C L E N S  /  C O O L I R I S
 	 ***************************************/
@@ -1054,11 +1068,11 @@ class tx_chgallery_pi1 extends tslib_pibase {
 	 * @param	string		$content: The PlugIn content
 	 * @param	array		$conf: The PlugIn configuration
 	 * @return	Dynamic RSS feed of the images for cooliris
-	 */	 
+	 */
 	function cooliris($content, $conf) {
 		$this->init($conf);
 
-		// get the images depending on the mode 
+		// get the images depending on the mode
 		if ($this->config['show']=='GALLERY') { // GALLERY view
 			$parts = $this->getCoolirisGallery($this->config['path']);
 		} elseif($this->config['show']=='LIST') { // CATEGORY view
@@ -1075,10 +1089,10 @@ class tx_chgallery_pi1 extends tslib_pibase {
 				}
 			}
 		}
-		
-		// Get an own logo 
+
+		// Get an own logo
 		$logo = ($this->conf['cooliris.']['logo']!='') ? '<atom:icon>'.$this->conf['cooliris.']['logo'].'</atom:icon>' : '';
-		
+
 		// put everything together into a valid xml structure
 		$xml.= '<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 						<rss xmlns:media="http://search.yahoo.com/mrss" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -1086,7 +1100,7 @@ class tx_chgallery_pi1 extends tslib_pibase {
 								'.$logo.$parts.'
 							</channel>
 						</rss>';
-		
+
 		return $xml;
 	}
 
@@ -1097,15 +1111,15 @@ class tx_chgallery_pi1 extends tslib_pibase {
 	 *
 	 * @param	string		$path: Path to the directory of the image
 	 * @return	All images of dir in xml notation
-	 */		
+	 */
 	function getCoolirisGallery($path) {
 		$parts = '';
 		$imageList = t3lib_div::getFilesInDir($path, $this->conf['fileTypes'],1,1);
-		
+
 		foreach($imageList as $key=>$file) {
 			$parts.= $this->addCoolirisImage($file, $this->conf['gallery.']['image.']);
-		}		
-		
+		}
+
 		return $parts;
 	}
 
@@ -1116,12 +1130,12 @@ class tx_chgallery_pi1 extends tslib_pibase {
 	 * @param	string		$file: The file which will be added
 	 * @param	array		$conf: Configuration of the image, to create the same thumbnails as on the website
 	 * @return	Single image in xml notation.
-	 */	
+	 */
 	function addCoolirisImage($file, $thumbnailConf) {
 		$thumbnailConf['file'] = $file;
 		$thumbnail = $this->cObj->IMG_RESOURCE($thumbnailConf);
-		
-		$prefix = ($this->conf['cooliris.']['prefixUrl']==1) ? t3lib_div::getIndpEnv('TYPO3_SITE_URL') : '';		
+
+		$prefix = ($this->conf['cooliris.']['prefixUrl']==1) ? t3lib_div::getIndpEnv('TYPO3_SITE_URL') : '';
 
 		$contentUrl = array();
 		$contentUrl['parameter'] = $GLOBALS['TSFE']->id;
@@ -1130,18 +1144,18 @@ class tx_chgallery_pi1 extends tslib_pibase {
 		if ($this->piVars['dir']) {
 			$contentUrl['additionalParams'] = '&tx_chgallery_pi1[dir]='.$this->piVars['dir'];
 		}
-		
+
 		$item = '<item>
 								<title>'.$this->getDescription($file, 'file').'</title>
 								<link>'.$this->cObj->typolink('', $contentUrl).'</link>
 								<media:thumbnail url="'.$prefix.$thumbnail.'"/>
 								<media:content url="'.$prefix.$file.'"/>
 							</item>';
-		
-		return $item; 	
-	}		
-	
-	
+
+		return $item;
+	}
+
+
 }
 
 
