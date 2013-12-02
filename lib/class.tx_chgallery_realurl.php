@@ -61,11 +61,11 @@ class tx_chgallery_realurl {
 									'chgallery.rss' => array(
 										'keyValues' => array (
 											'type' => 9713,
-										),
-									),
-								),
-							),
-						),
+										)
+									)
+								)
+							)
+						)
 					);
 
 	}
