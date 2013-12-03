@@ -42,30 +42,30 @@ class tx_chgallery_realurl {
 								'_DEFAULT' => array(
 									'galerie' => array(
 										array(
-											'GETvar' => 'tx_chgallery_pi1[pointer]',
+											'GETvar' => 'tx_chgallery_pi1[pointer]'
 										),
 										array(
-											'GETvar' => 'tx_chgallery_pi1[dir]',
+											'GETvar' => 'tx_chgallery_pi1[dir]'
 										),
 										array(
-											'GETvar' => 'tx_chgallery_pi1[single]',
+											'GETvar' => 'tx_chgallery_pi1[single]'
 										),
 										array(
-											'GETvar' => 'tx_chgallery_pi1[ceid]',
-										),
-									),
-								),
+											'GETvar' => 'tx_chgallery_pi1[ceid]'
+										)
+									)
+								)
 							),
 							'fileName' => array (
 								'index' => array(
 									'chgallery.rss' => array(
 										'keyValues' => array (
-											'type' => 9713,
-										),
-									),
-								),
-							),
-						),
+											'type' => 9713
+										)
+									)
+								)
+							)
+						)
 					);
 
 	}
