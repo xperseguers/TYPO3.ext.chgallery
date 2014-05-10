@@ -15,7 +15,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'description' => 'Simple gallery with images from a directory including categories, pagebrowser, lightbox, ratings. Very easy to use featuring templates and TS manipulation. Visit the demo: http://www.rggooglemap.com/dev/chgallery.html',
 	'category' => 'fe',
 	'shy' => 0,
-	'version' => '2.6.0-dev',
+	'version' => '2.7.0-dev',
 	'dependencies' => '',
 	'conflicts' => '',
 	'priority' => '',
@@ -34,7 +34,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'CGLcompliance_note' => '',
 	'constraints' => array(
 		'depends' => array(
-			'typo3' => '4.5.0-6.1.99',
+			'typo3' => '4.5.0-6.2.99',
 		),
 		'conflicts' => array(
 		),
