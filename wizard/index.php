@@ -42,6 +42,7 @@ $MCONF['name']='xMOD_tx_chgallery_wizard';
 $MCONF['script']='index.php';
 
 require_once ($BACK_PATH.'init.php');
+require_once(t3lib_extMgm::extPath('chgallery').'lib/class.tx_chgallery_utility.php');
 $LANG->includeLLFile('EXT:chgallery/wizard/locallang.xml');
 
     // ....(But no access check here...)
@@ -224,6 +225,9 @@ class tx_chgallery_wizard extends t3lib_SCbase {
 		 */	
 		function checkPath($path) {
 			$path = trim($path);
+
+			$path = tx_chgallery_utility::convertFalPath($path);
+
 			if (!t3lib_div::validPathStr($path)) {
 				return '';
 			}
