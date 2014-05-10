@@ -42,8 +42,6 @@ $MCONF['name']='xMOD_tx_chgallery_wizard';
 $MCONF['script']='subdir.php';
 
 require_once ($BACK_PATH.'init.php');
-require_once ($BACK_PATH.'template.php');
-require_once (PATH_t3lib.'class.t3lib_scbase.php');
 $LANG->includeLLFile('EXT:chgallery/wizard/locallang.xml');
 
     // ....(But no access check here...)
