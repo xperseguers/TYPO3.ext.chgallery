@@ -22,7 +22,8 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-require_once(PATH_tslib.'class.tslib_pibase.php');
+require_once(t3lib_extMgm::extPath('chgallery').'lib/class.tx_chgallery_utility.php');
+
 /**
  * Plugin 'Simple gallery' for the 'chgallery' extension.
  *
@@ -928,18 +929,7 @@ class tx_chgallery_pi1 extends tslib_pibase {
 	function checkPath($path) {
 		$path = trim($path);
 
-		if (preg_match('/^file:(\d+):(.*)$/', $path, $matches)) {
-			/** @var $storageRepository \TYPO3\CMS\Core\Resource\StorageRepository */
-			$storageRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\StorageRepository');
-			/** @var $storage \TYPO3\CMS\Core\Resource\ResourceStorage */
-			$storage = $storageRepository->findByUid(intval($matches[1]));
-			$storageRecord = $storage->getStorageRecord();
-			$storageConfiguration = $storage->getConfiguration();
-			if ($storageRecord['driver'] === 'Local') {
-				$basePath = rtrim($storageConfiguration['basePath'], '/') . '/';
-				$path = $basePath . substr($matches[2], 1);
-			}
-		}
+		$path = tx_chgallery_utility::convertFalPath($path);
 
 		if (!t3lib_div::validPathStr($path)) {
 			return '';

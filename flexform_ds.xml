@@ -65,17 +65,17 @@
 				</TCEforms>
 			</path>
 
-      <!--description>
-				<TCEforms>
-				<label>LLL:EXT:chgallery/locallang_db.xml:description</label>
-					<config>
-						<type>user</type>
-						<userFunc>tx_chgallery_tca->user_chgallerydescr</userFunc>
-					</config>
-				</TCEforms>
-			</description-->
+            <description>
+                <TCEforms>
+                    <label>LLL:EXT:chgallery/locallang_db.xml:description</label>
+                    <config>
+                        <type>user</type>
+                        <userFunc>tx_chgallery_tca->user_chgallerydescr</userFunc>
+                    </config>
+                </TCEforms>
+            </description>
 
-      <title>
+            <title>
         <TCEforms>
           <displayCond>FIELD:show:IN:LIST</displayCond>
 					<label>LLL:EXT:chgallery/locallang_db.xml:title</label>

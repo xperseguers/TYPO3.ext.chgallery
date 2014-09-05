@@ -1,7 +1,5 @@
 <?php
 
-require_once(PATH_t3lib.'class.t3lib_basicfilefunc.php');
-
 class tx_chgallery_extraeval {
 
 	function returnFieldJS() {
