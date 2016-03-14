@@ -77,14 +77,14 @@ class tx_chgallery_wizard extends t3lib_SCbase {
 			} else {
 					// get the single record
 				$where = 'uid='.intval($vars['uid']).' AND deleted=0';
-				$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('sys_language_uid,'.$vars['field'], $vars['table'], $where);
+				$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', 'tt_content', $where);
 				$row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
 				
 				// get a lanuage prefix for the description
 				$this->languagePrefix = ($row['sys_language_uid']>0) ? '-'.$row['sys_language_uid'] : '';
 				
 					// read the flexform settings and transform it to array
-				$flexformArray = t3lib_div::xml2array($row[$vars['field']]);
+				$flexformArray = t3lib_div::xml2array($row['pi_flexform']);
 				$flexformArray = $flexformArray['data']['sDEF']['lDEF'];
 
 					// get all the infos we need
